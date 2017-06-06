@@ -82,6 +82,12 @@ elseif(MSVC)
               # (performance warning)
       "C4820" # 'bytes' bytes padding added after construct 'member_name'
       "C5027" # move assignment operator was implicitly defined as deleted
+      # CHWARR: There's a bug in recent versions (as of 2017-06-05) of the
+      # Windows SDK that causes C4668 to be emitted from corecrt_math.h.
+      # Until a fix for this is released, we disable this warning:
+      # '_M_HYBRID_X86_ARM64' is not defined as a preprocessor macro,
+      # replacing with '0' for '#if/#elif'
+      "C4668"
       )
   set(MSVC_LEVEL4_WARNINGS_LIST
       # See https://connect.microsoft.com/VisualStudio/feedback/details/1217660/warning-c4265-when-using-functional-header
